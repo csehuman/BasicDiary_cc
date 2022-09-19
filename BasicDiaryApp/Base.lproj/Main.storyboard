@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uSv-ew-1gY">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiaryCell" id="uSv-ew-1gY" customClass="DiaryCell" customModule="BasicDiaryApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="92L-75-n9u">
@@ -59,6 +59,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="200" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="Gnq-SI-drm" id="3dK-0n-xbq"/>
+                                            <outlet property="titleLabel" destination="0AU-q4-CFe" id="aRs-Oh-h1r"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -79,6 +83,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="qiG-zZ-J6y" id="RrW-LM-Iba"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="165" y="1551"/>
         </scene>
-        <!--View Controller-->
+        <!--Star View Controller-->
         <scene sceneID="3s1-Dx-cGy">
             <objects>
-                <viewController id="jED-G7-c3m" sceneMemberID="viewController">
+                <viewController id="jED-G7-c3m" customClass="StarViewController" customModule="BasicDiaryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uch-Dt-WhJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,24 +144,24 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8Fh-nA-i9s">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StarCell" id="8Fh-nA-i9s" customClass="StarCell" customModule="BasicDiaryApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kSM-aD-TZy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-nE-Pyt">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-nE-Pyt">
                                                     <rect key="frame" x="24" y="20" width="366" height="60.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일기 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1D-u9-H4x">
-                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="366" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일기 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8R-Dg-80r">
-                                                            <rect key="frame" x="0.0" y="40" width="63.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="40" width="366" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -169,6 +176,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="100"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="F8R-Dg-80r" id="7kd-Rk-YVr"/>
+                                            <outlet property="titleLabel" destination="T1D-u9-H4x" id="kDd-ll-qay"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -183,15 +194,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hKs-Bf-Hni"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Z8p-f2-dwo" id="0gA-FY-Eoh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBR-lW-7Fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111.5942028985507" y="1550.8928571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--Diary Detail View Controller-->
         <scene sceneID="RJh-us-m1c">
             <objects>
-                <viewController id="xgB-g0-CNu" sceneMemberID="viewController">
+                <viewController id="xgB-g0-CNu" customClass="DiaryDetailViewController" customModule="BasicDiaryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kke-sa-zZN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,10 +292,15 @@
                             <constraint firstItem="gnU-uS-Z97" firstAttribute="centerX" secondItem="lOD-jM-alc" secondAttribute="centerX" id="zQ7-Ly-JSr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="u6s-TE-fjg" id="PIW-N9-SAC"/>
+                        <outlet property="dateTextLabel" destination="lOD-jM-alc" id="DAV-uG-ORh"/>
+                        <outlet property="titleTextLabel" destination="VAs-jZ-OMd" id="Det-6y-fyI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1U-rb-3CY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2035" y="1551"/>
+            <point key="canvasLocation" x="2034.7826086956522" y="1550.8928571428571"/>
         </scene>
         <!--일기장-->
         <scene sceneID="EUk-3a-iJy">
@@ -300,10 +319,10 @@
             </objects>
             <point key="canvasLocation" x="167" y="790"/>
         </scene>
-        <!--View Controller-->
+        <!--Diary Compose View Controller-->
         <scene sceneID="krf-Q4-13j">
             <objects>
-                <viewController id="sil-hs-qAD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryComposeViewController" id="sil-hs-qAD" customClass="DiaryComposeViewController" customModule="BasicDiaryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jaa-zh-EVv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -373,6 +392,11 @@
                     <navigationItem key="navigationItem" id="zuz-8G-c2g">
                         <barButtonItem key="rightBarButtonItem" title="등록" id="58T-Jo-hq3"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentsTextView" destination="GlS-bc-kGk" id="thM-eW-nbH"/>
+                        <outlet property="dateTextField" destination="6bC-Gn-nFw" id="e79-qX-lOC"/>
+                        <outlet property="titleTextField" destination="fV9-j0-B7o" id="EDr-Ae-je2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6x9-p1-czl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

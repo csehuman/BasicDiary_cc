@@ -22,6 +22,12 @@ class DiaryComposeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let diaryToEdit = diaryToEdit, inEditingMode {
+            titleTextField.text = diaryToEdit.title
+            contentsTextView.text = diaryToEdit.contents
+            dateTextField.text = diaryToEdit.createdDate.longDateString
+        }
+        
         setUpTitleTextField()
         setUpContentsView()
         setUpDateTextField()
@@ -66,7 +72,12 @@ extension DiaryComposeViewController {
     }
     
     private func setUpDateTextField() {
-        diaryDate = Date()
+        if let diaryToEdit = diaryToEdit, inEditingMode {
+            diaryDate = diaryToEdit.createdDate
+        } else {
+            diaryDate = Date()
+        }
+        
         dateTextField.text = diaryDate?.longDateString
         dateTextField.delegate = self
         

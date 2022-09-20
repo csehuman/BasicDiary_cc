@@ -15,7 +15,21 @@ class DiaryDetailViewController: UIViewController {
     var starButton: UIBarButtonItem?
     
     var diary: Diary?
-
+    var isDeletedDiary: Bool = false
+    var tokens = [NSObjectProtocol]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isDeletedDiary {
+            let alert = UIAlertController(title: "삭제된 일기입니다.", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -43,6 +43,8 @@ class DiaryDetailViewController: UIViewController {
     }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
-        
+        guard let diary = diary else { return }
+        DataManager.shared.deleteDiary(diary: diary)
+        navigationController?.popViewController(animated: true)
     }
 }

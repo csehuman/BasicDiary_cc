@@ -37,7 +37,7 @@ class DiaryComposeViewController: UIViewController {
         if inEditingMode {
             guard let diaryToEdit = diaryToEdit else { return }
             let editedDiary = Diary(uuidString: diaryToEdit.uuidString, title: title, contents: contents, createdDate: date, isStar: diaryToEdit.isStar)
-            DataManager.shared.updateDiary(diary: editedDiary, uuidString: diaryToEdit.uuidString)
+            DataManager.shared.updateDiary(diary: editedDiary)
         } else {
             let uuidString = UUID().uuidString
             let newDiary = Diary(uuidString: uuidString, title: title, contents: contents, createdDate: date, isStar: false)

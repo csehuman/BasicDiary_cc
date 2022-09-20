@@ -9,8 +9,8 @@ import Foundation
 
 struct Diary {
     let uuidString: String
-    let title: String
-    let contents: String
-    let createdDate: Date
-    let isStar: Bool
+    var title: String
+    var contents: String
+    var createdDate: Date
+    var isStar: Bool
 }

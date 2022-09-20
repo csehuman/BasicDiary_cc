@@ -19,6 +19,10 @@ class DataManager {
     }
     
     func saveDiaryList() {
+        diaryList = diaryList.sorted(by: { first, second in
+            first.createdDate.compare(second.createdDate) == .orderedDescending
+        })
+        
         let diaryData = diaryList.map {
             ["uuidString": $0.uuidString, "title": $0.title, "contents": $0.contents, "createdDate": $0.createdDate, "isStar": $0.isStar]
         }
@@ -37,10 +41,6 @@ class DataManager {
             
             return Diary(uuidString: uuidString, title: title, contents: contents, createdDate: createdDate, isStar: isStar)
         }
-        
-        diaryList = diaryList.sorted(by: { first, second in
-            first.createdDate.compare(second.createdDate) == .orderedDescending
-        })
     }
     
     func addDiary(diary: Diary) {
@@ -48,12 +48,25 @@ class DataManager {
         saveDiaryList()
     }
     
-    func updateDiary(diary: Diary, uuidString: String) {
-        
+    func updateDiary(diary: Diary) {
+        guard let index = diaryList.firstIndex(where: {
+            $0.uuidString == diary.uuidString
+        }) else { return }
+        diaryList[index] = diary
+        saveDiaryList()
     }
     
     func deleteDiary(diary: Diary) {
-        
+        guard let index = diaryList.firstIndex(where: {
+            $0.uuidString == diary.uuidString
+        }) else { return }
+        diaryList.remove(at: index)
+        saveDiaryList()
+    }
+    
+    func starDiary(diary: Diary) {
+        updateDiary(diary: diary)
+        // send noti
     }
 }
 

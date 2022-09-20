@@ -7,6 +7,13 @@
 
 import Foundation
 
+extension NSNotification.Name {
+    static let DiaryAdded = NSNotification.Name("DiaryAddedNotification")
+    static let DiaryEdited = NSNotification.Name("DiaryEditedNotification")
+    static let DiaryDeleted = NSNotification.Name("DiaryDeletedNotification")
+    static let DiaryStared = NSNotification.Name("DiaryStared")
+}
+
 class DataManager {
     static let shared = DataManager()
     private init() { }
@@ -46,6 +53,7 @@ class DataManager {
     func addDiary(diary: Diary) {
         diaryList.append(diary)
         saveDiaryList()
+        NotificationCenter.default.post(name: NSNotification.Name.DiaryAdded, object: nil)
     }
     
     func updateDiary(diary: Diary) {
@@ -54,6 +62,7 @@ class DataManager {
         }) else { return }
         diaryList[index] = diary
         saveDiaryList()
+        NotificationCenter.default.post(name: NSNotification.Name.DiaryEdited, object: diary)
     }
     
     func deleteDiary(diary: Diary) {
@@ -62,11 +71,11 @@ class DataManager {
         }) else { return }
         diaryList.remove(at: index)
         saveDiaryList()
+        NotificationCenter.default.post(name: NSNotification.Name.DiaryDeleted, object: nil)
     }
     
     func starDiary(diary: Diary) {
         updateDiary(diary: diary)
-        // send noti
     }
 }
 

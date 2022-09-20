@@ -28,6 +28,28 @@ class DiaryDetailViewController: UIViewController {
         starButton?.image = diary.isStar ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         starButton?.tintColor = .orange
         navigationItem.rightBarButtonItem = starButton
+        
+        var token = NotificationCenter.default.addObserver(forName: NSNotification.Name.DiaryEdited, object: nil, queue: .main) { [weak self] noti in
+            guard let newDiary = noti.object as? Diary else { return }
+            if self?.diary?.uuidString == newDiary.uuidString {
+                self?.diary = newDiary
+                self?.titleTextLabel.text = newDiary.title
+                self?.contentsTextView.text = newDiary.contents
+                self?.dateTextLabel.text = newDiary.createdDate.longDateString
+                self?.starButton?.image = newDiary.isStar ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+            }
+        }
+        tokens.append(token)
+        
+        token = NotificationCenter.default.addObserver(forName: NSNotification.Name.DiaryDeleted, object: nil, queue: .main, using: { [weak self] noti in
+            self?.isDeletedDiary = true
+        })
+    }
+    
+    deinit {
+        for token in tokens {
+            NotificationCenter.default.removeObserver(token)
+        }
     }
     
     @objc func tapStarButton(_ sender: UIBarButtonItem) {

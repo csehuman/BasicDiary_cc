@@ -20,6 +20,7 @@
 		DA438D6028D8597E00830E2D /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA438D5F28D8597E00830E2D /* StarCell.swift */; };
 		DA438D6328D861ED00830E2D /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA438D6228D861ED00830E2D /* Diary.swift */; };
 		DA438D6528D8621D00830E2D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA438D6428D8621D00830E2D /* DataManager.swift */; };
+		DA438D6828D9536400830E2D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA438D6728D9536400830E2D /* Date+Formatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		DA438D5F28D8597E00830E2D /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
 		DA438D6228D861ED00830E2D /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		DA438D6428D8621D00830E2D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DA438D6728D9536400830E2D /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		DA438D4028D8273200830E2D /* BasicDiaryApp */ = {
 			isa = PBXGroup;
 			children = (
+				DA438D6628D9535100830E2D /* Formatter */,
 				DA438D6128D861CC00830E2D /* Data & Model */,
 				DA438D5C28D8595000830E2D /* VC */,
 				DA438D5B28D8594700830E2D /* Cell */,
@@ -110,6 +113,14 @@
 				DA438D6428D8621D00830E2D /* DataManager.swift */,
 			);
 			path = "Data & Model";
+			sourceTree = "<group>";
+		};
+		DA438D6628D9535100830E2D /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				DA438D6728D9536400830E2D /* Date+Formatter.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA438D5E28D8597100830E2D /* DiaryCell.swift in Sources */,
+				DA438D6828D9536400830E2D /* Date+Formatter.swift in Sources */,
 				DA438D6528D8621D00830E2D /* DataManager.swift in Sources */,
 				DA438D5628D858D500830E2D /* StarViewController.swift in Sources */,
 				DA438D5A28D858FA00830E2D /* DiaryDetailViewController.swift in Sources */,

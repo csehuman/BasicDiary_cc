@@ -11,9 +11,16 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -38,7 +45,7 @@ extension ViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as? DiaryCell else { return UICollectionViewCell() }
         
         cell.titleLabel.text = DataManager.shared.diaryList[indexPath.row].title
-        cell.dateLabel.text = DataManager.shared.diaryList[indexPath.row].createdDate.dateString
+        cell.dateLabel.text = DataManager.shared.diaryList[indexPath.row].createdDate.shortDateString
         
         return cell
     }

@@ -26,6 +26,7 @@ class DiaryComposeViewController: UIViewController {
             titleTextField.text = diaryToEdit.title
             contentsTextView.text = diaryToEdit.contents
             dateTextField.text = diaryToEdit.createdDate.longDateString
+            addButton.title = "수정"
         }
         
         setUpTitleTextField()
